@@ -11,8 +11,14 @@
 Title
 #################################################################
 
+trap ctrl_z sigtstp
+function ctrl_z() {
+	echo
+	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
+}
+
 clear
-games=( 'bald1' 'bald2' 'deadcells' 'dungeons2' 'gungeon' 'icon' 'neverwinter' 'stardew' )
+games=( 'bald1' 'bald2' 'deadcells' 'dungeons2' 'gungeon' 'icon' 'neverwinter' 'stardew' 'exit' )
 
 echo "---Options---"
 for element in "${games[@]}"
@@ -49,6 +55,9 @@ case $lower in
     stardew)
         /home/ari/GOG\ Games/Stardew\ Valley/start.sh
         ;;
+	exit)
+		exit
+		;;
     *)
         echo "failed input error"
         ;;
