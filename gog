@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher Version 2.8.1
+#GoG Game Launcher version 3.0
 #################################################################
 : <<'Title'
   ____        ____   _                           _               
@@ -18,49 +18,18 @@ function ctrl_z() {
 	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
 }
 
-clear
-games=( 'bald1' 'bald2' 'deadcells' 'dungeons2' 'gungeon' 'icon' 'neverwinter' 'stardew' 'exit' )
+games=(/home/ari/GOG\ Games/*)
+number=0
 
 #Prints out all options that appear in the array
 echo "---Options---"
 for element in "${games[@]}"
 do
-    echo ": $element"
+    echo ": $number ${element:20}"
+	number=$((number+1))
 done
 echo "-------------"
 
-read -p "Game: " game
-lower=${game,,}
+read -p "Choice: " choice
 
-case $lower in
-    bald1)
-        /home/ari/GOG\ Games/Baldurs\ Gate\ Enhanced\ Edition/start.sh
-        ;;
-    bald2)
-        /home/ari/GOG\ Games/Baldurs\ Gate\ 2\ Enhanced\ Edition/start.sh
-        ;;
-    deadcells)
-        /home/ari/GOG\ Games/Dead\ Cells/start.sh
-        ;;
-    dungeons2)
-        /home/ari/GOG\ Games/Dungeons\ 2/start.sh
-        ;;
-    gungeon)
-        /home/ari/GOG\ Games/Enter\ the\ Gungeon/start.sh
-        ;;
-    icon)
-        /home/ari/GOG\ Games/Iconoclasts/start.sh
-        ;;
-    neverwinter)
-        /home/ari/GOG\ Games/Neverwinter\ Nights\ Enhanced\ Edition/start.sh
-        ;;
-    stardew)
-        /home/ari/GOG\ Games/Stardew\ Valley/start.sh
-        ;;
-	exit)
-		exit
-		;;
-    *)
-        echo "failed input error"
-        ;;
-esac
+exec "${games[$choice]}/start.sh"
