@@ -1,2 +1,2 @@
 # linux-scripts
-Scripts I have made for my Arch Linux installs
+Scripts I use for my Arch Linux installs
