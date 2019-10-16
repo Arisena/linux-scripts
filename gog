@@ -21,6 +21,8 @@ function ctrl_z() {
 games=(/home/ari/GOG\ Games/*)
 number=0
 
+clear
+
 #Prints out all options that appear in the array
 echo "---Options---"
 for element in "${games[@]}"
