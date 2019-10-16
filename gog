@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#GoG Game Launcher Version 2.8.1
 #################################################################
 : <<'Title'
   ____        ____   _                           _               
@@ -11,6 +11,7 @@
 Title
 #################################################################
 
+#trap section : stops script from being able to sleep
 trap ctrl_z sigtstp
 function ctrl_z() {
 	echo
@@ -20,6 +21,7 @@ function ctrl_z() {
 clear
 games=( 'bald1' 'bald2' 'deadcells' 'dungeons2' 'gungeon' 'icon' 'neverwinter' 'stardew' 'exit' )
 
+#Prints out all options that appear in the array
 echo "---Options---"
 for element in "${games[@]}"
 do
