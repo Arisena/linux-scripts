@@ -37,7 +37,7 @@ case $selection in
 		XS=gnome startx
 		;;
 	3 )
-		XS=dwarf startx
+		XS=df startx
 		;;
 	4 )
 		XS=cata startx
