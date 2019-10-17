@@ -43,3 +43,5 @@ case $selection in
 		XS=cata startx
 		;;
 esac
+
+clear
