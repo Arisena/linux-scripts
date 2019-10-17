@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 3.4
+#GoG Game Launcher version 3.7
 #################################################################
 : <<'Banner'
   ____        ____   _                           _               
@@ -11,19 +11,24 @@
 Banner
 #################################################################
 
-#trap section : stops script from being able to sleep
-trap ctrl_z sigtstp
-function ctrl_z() {
-	echo
-	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
-	echo "ERROR RESTARTING"
+#Functions used in the script
+redo() {
 	for i in `seq 1 5`; do
-    	sleep .05
+    	sleep .1
     	echo -n "."
 	done
 	kill $0 2> /dev/null
 	exec $0
 }
+function ctrl_z() {
+	echo
+	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
+	echo "ERROR RESTARTING"
+	redo
+}
+
+#trap section : stops script from being able to sleep
+trap ctrl_z sigtstp
 
 games=(/home/ari/GOG\ Games/*)
 number=0
@@ -41,4 +46,14 @@ echo "-------------"
 
 read -p "Choice: " choice
 
-exec "${games[$choice]}/start.sh"
+if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ]
+then
+	echo "Input Error : Choice Not Listed : Restarting"
+	redo
+elif [ $choice -eq $choice 2> /dev/null ]
+then
+	exec "${games[$choice]}/start.sh"
+else
+	echo "Input Error : Restarting Script"
+	redo
+fi
