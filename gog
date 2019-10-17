@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 3.0
+#GoG Game Launcher version 3.3
 #################################################################
 : <<'Title'
   ____        ____   _                           _               
@@ -16,6 +16,13 @@ trap ctrl_z sigtstp
 function ctrl_z() {
 	echo
 	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
+	echo "RESTARTING"
+	for i in `seq 1 5`; do
+    	sleep .1
+    	echo -n "."
+	done
+	kill $0 2> /dev/null
+	exec $0
 }
 
 games=(/home/ari/GOG\ Games/*)
