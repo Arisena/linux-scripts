@@ -36,13 +36,13 @@ number=0
 clear
 
 #Prints out all options that appear in the array
-echo "---Options---"
+echo "          ---Options---"
 for element in "${games[@]}"
 do
     echo ": $number ${element:20}"
 	number=$((number+1))
 done
-echo "-------------"
+echo "          -------------"
 
 read -p "Choice: " choice
 
