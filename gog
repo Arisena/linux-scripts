@@ -16,9 +16,9 @@ trap ctrl_z sigtstp
 function ctrl_z() {
 	echo
 	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
-	echo "RESTARTING"
+	echo "ERROR RESTARTING"
 	for i in `seq 1 5`; do
-    	sleep .1
+    	sleep .05
     	echo -n "."
 	done
 	kill $0 2> /dev/null
