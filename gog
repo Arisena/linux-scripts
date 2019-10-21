@@ -11,24 +11,8 @@
 Banner
 #################################################################
 
-#Functions used in the script
-redo() {
-	for i in `seq 1 5`; do
-    	sleep .1
-    	echo -n "."
-	done
-	kill $0 2> /dev/null
-	exec $0
-}
-function ctrl_z() {
-	echo
-	echo "ERROR: SIGTSTP(ctrl_z) NOT SUPPORTED"
-	echo "ERROR RESTARTING"
-	redo
-}
-
-#trap section : stops script from being able to sleep
-trap ctrl_z sigtstp
+#Source file for functions used in the script
+source redoTrap.sh
 
 games=(/home/ari/GOG\ Games/*)
 number=0
