@@ -6,7 +6,17 @@ fi
 
 redo() {
 	clear
-	printf "Sleep Not Supported\n"
+	sleep .1
+	printf "Fatal Error Occured\n"
+	sleep .5
+	printf "Recovering"
+	for i in {1..5}
+	do
+		sleep .6
+		printf "."
+	done
+	sleep .6
+	printf "\n"
 	printf '%s%s%s%s' "$(tput setaf 2)" "$(tput blink)" "Press enter to restart" "$(tput sgr0)"
 	read
 	kill $0 2> /dev/null
@@ -23,6 +33,14 @@ trap ctrl_c sigint
 function ctrl_z() {
 	echo
 	echo "Sleep not supported"
+	sleep 1
+	for i in {1..5}
+	do
+		printf "ERROR"
+		sleep .1
+	done
+	printf "FATAL"
+	sleep .2
 	redo
 }
 trap ctrl_z sigtstp
