@@ -7,7 +7,7 @@ fi
 redo() {
 	clear
 	printf "Sleep Not Supported\n"
-	printf "Press Enter to restart"
+	printf '%s%s%s%s' "$(tput setaf 2)" "$(tput blink)" "Press enter to restart" "$(tput sgr0)"
 	read
 	kill $0 2> /dev/null
 	exec $0
