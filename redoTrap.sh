@@ -12,6 +12,7 @@ redo() {
 	kill $0 2> /dev/null
 	exec $0
 }
+
 function ctrl_c() {
 	echo
 	echo "SIGINT RECEIVED"
