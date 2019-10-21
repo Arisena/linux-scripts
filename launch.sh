@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -z $CALLED_FROM_START_APP ] && { echo "Not called correctly"; exit 42; }
+
 redo() {
 	for i in `seq 1 5`; do
     	sleep .1
