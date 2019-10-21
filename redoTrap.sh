@@ -1,3 +1,9 @@
+if [ "${BASH_SOURCE[0]}" -ef "$0" ]
+then
+    echo "Hey, you should source this script, not execute it!"
+    exit 1
+fi
+
 redo() {
 	clear
 	printf "Sleep Not Supported\n"
