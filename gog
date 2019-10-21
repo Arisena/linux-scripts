@@ -12,7 +12,7 @@ Banner
 #################################################################
 
 #Source file for functions used in the script
-source redoTrap.sh
+source /usr/local/lib/redoTrap.sh
 
 games=(/home/ari/GOG\ Games/*)
 number=0
