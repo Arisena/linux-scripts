@@ -19,15 +19,26 @@ number=0
 
 clear
 
+printf "Starting\n"
+printf "Scanning Game Dir\n"
+sleep .5
+printf "Games Found"
+sleep .1
+clear
+
+sleep .2
 #Prints out all options that appear in the array
 echo "          ---Options---"
 for element in "${games[@]}"
 do
+	sleep .2
     echo ": $number ${element:20}"
 	number=$((number+1))
 done
+sleep .2
 echo "          -------------"
 
+sleep .4
 read -p "Choice: " choice
 
 if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ]
