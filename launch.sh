@@ -22,6 +22,7 @@ function ctrl_z() {
 	echo "Sleep not supported"
 	redo
 }
+trap ctrl_z sigtstp
 
 dialog --title "Launch.sh" \
 	--backtitle 'Version 0.3' \
