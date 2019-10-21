@@ -3,6 +3,8 @@
 clear
 mounttype=( 'physical' 'network' 'umount' )
 
+sudo fdisk -l | grep --color=auto /dev/
+
 echo "----------"
 for element in "${mounttype[@]}"
 do
