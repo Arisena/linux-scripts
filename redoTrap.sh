@@ -1,6 +1,6 @@
 if [ "${BASH_SOURCE[0]}" -ef "$0" ]
 then
-    echo "Hey, you should source this script, not execute it!"
+    echo "Source this script, don't execute it"
     exit 1
 fi
 
