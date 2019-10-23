@@ -41,3 +41,5 @@ else
 	echo "Input Error : Restarting Script"
 	redo
 fi
+
+clear
