@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 3.7
+#GoG Game Launcher version 3.9
 #################################################################
 : <<'Banner'
   ____        ____   _                           _ 
@@ -30,7 +30,7 @@ echo "          -------------"
 
 read -p "Choice: " choice
 
-if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ]
+if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -z "$choice" ]
 then
 	echo "Input Error : Choice Not Listed : Restarting"
 	redo
