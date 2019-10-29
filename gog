@@ -16,6 +16,7 @@ source /usr/local/lib/redoTrap.sh
 
 games=(/home/ari/GOG\ Games/*)
 number=0
+sstop=exit
 
 clear
 
@@ -30,20 +31,25 @@ echo "          -------------"
 
 read -p "Choice: " choice
 
-if [ $choice -eq $((number)) ]
+if [ $choice -eq $((number)) 2> /dev/null ]
 then
 	echo "Input Error"
 	redo
+elif grep -q exit <<<"$choice";
+then
+	exit 0
 fi
 
 if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -z "$choice" ]
 then
 	echo "Input Error : Choice Not Listed : Restarting"
+	sleep .5
 	redo
 elif [ $choice -eq $choice 2> /dev/null ]
 then
 	exec "${games[$choice]}/start.sh"
 else
 	echo "Input Error : Restarting Script"
+	sleep .5
 	redo
 fi
