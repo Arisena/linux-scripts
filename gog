@@ -30,6 +30,12 @@ echo "          -------------"
 
 read -p "Choice: " choice
 
+if [ $choice -eq $((number)) ]
+then
+	echo "Input Error"
+	redo
+fi
+
 if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -z "$choice" ]
 then
 	echo "Input Error : Choice Not Listed : Restarting"
