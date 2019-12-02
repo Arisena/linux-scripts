@@ -15,8 +15,9 @@ selection=$(dialog --title "Graphical Interface" \
 	--menu "Please Select:" 11 25 4 \
 	"1" "i3" \
 	"2" "gnome" \
-	"3" "Dwarf Fortress" \
-	"4" "Cataclysm DDA" \
+	"3" "cinnamon" \
+	"4" "Dwarf Fortress" \
+	"5" "Cataclysm DDA" \
 	2>&1 1>&3)
 
 case $selection in
@@ -31,9 +32,12 @@ case $selection in
 		XS=gnome startx
 		;;
 	3 )
-		XS=df startx
+		XS=cin startx
 		;;
 	4 )
+		XS=df startx
+		;;
+	5 )
 		XS=cata startx
 		;;
 esac
