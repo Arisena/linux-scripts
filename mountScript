@@ -25,6 +25,7 @@ case $mtype in
 		read folder\?'folder: '
 		read username\?'username: '
 		read -s password\?'password: '
+		echo "\n"
 		sudo mount -t cifs \\\\$ip\\$folder /mnt/network -o username=$username,password=$password,uid=1000,gid=999
 		;;
 	3)
