@@ -1,0 +1,5 @@
+xrandr --output DisplayPort-0 --left-of HDMI-A-0
+
+sleep 1
+
+xrandr --output DisplayPort-1 --right-of HDMI-A-0
