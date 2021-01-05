@@ -1,0 +1,8 @@
+#!/bin/sh
+touch /tmp/dwm.lock
+wallpaper
+
+while [[ -e "/tmp/dwm.lock" ]]; do
+    dwm
+    #~/projects/dwm-clone/dwm
+done
