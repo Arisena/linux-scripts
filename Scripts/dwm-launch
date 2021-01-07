@@ -1,6 +1,7 @@
 #!/bin/sh
 touch /tmp/dwm.lock
 wallpaper
+fix2ndD
 
 while [[ -e "/tmp/dwm.lock" ]]; do
     dwm
