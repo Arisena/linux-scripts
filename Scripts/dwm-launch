@@ -3,6 +3,7 @@ touch /tmp/dwm.lock
 wallpaper
 fix2ndD
 numlockx
+flameshot
 
 while [[ -e "/tmp/dwm.lock" ]]; do
     dwm
