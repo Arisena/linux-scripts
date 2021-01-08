@@ -4,6 +4,7 @@ wallpaper
 fix2ndD
 numlockx
 flameshot
+pasystray
 
 while [[ -e "/tmp/dwm.lock" ]]; do
     dwm
