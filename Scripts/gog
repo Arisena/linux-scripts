@@ -29,6 +29,7 @@ do
 done
 echo "          -------------"
 echo "'Exit' is also valid"
+
 read -p "Choice: " choice
 
 if [ $choice -eq $((number)) 2> /dev/null ]
