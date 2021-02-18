@@ -14,7 +14,7 @@ Banner
 #Source file for functions used in the script
 source /usr/local/lib/Trap.sh
 
-games=(/home/ari/GOG\ Games/*)
+games=(/home/*/GOG\ Games/*)
 number=0
 sstop=exit
 
