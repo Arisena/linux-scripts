@@ -4,8 +4,8 @@ games=(/home/*/GOG\ Games/*)
 name=("${games[@]##*/}")
 number=0
 
-choice=$(zenity --width 500 --height 500 --list --column "Name" "${name[@]}")
+choice=$(zenity --width 500 --height 500 --list --column "Games Installed, they must be in your Home Directory" "${name[@]}")
 
 echo $choice
 
-exec "GOG Games/$choice/start.sh"
+exec "~/GOG Games/$choice/start.sh"
