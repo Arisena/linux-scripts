@@ -11,9 +11,10 @@
 Banner
 #################################################################
 
-#Source file for functions used in the script
+#Source file for functions used in the script, completely not needed, here for fun
 source /usr/local/lib/Trap.sh
 
+#Variables, makes an array with all games in that directory, needs changed if installing games outside home directory
 games=(/home/*/GOG\ Games/*)
 number=0
 sstop=exit
