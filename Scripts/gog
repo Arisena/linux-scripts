@@ -17,7 +17,6 @@ source /usr/local/lib/Trap.sh
 #Variables, makes an array with all games in that directory, needs changed if installing games outside home directory
 games=(/home/*/GOG\ Games/*)
 number=0
-sstop=exit
 
 clear
 
