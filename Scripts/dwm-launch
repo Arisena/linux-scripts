@@ -1,7 +1,7 @@
 #!/bin/sh
 touch /tmp/dwm.lock
-wallpaper
 fix2ndD
+wallpaper
 numlockx
 
 while [[ -e "/tmp/dwm.lock" ]]; do
