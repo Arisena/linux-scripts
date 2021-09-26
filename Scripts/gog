@@ -10,7 +10,6 @@
                                                                  
 Banner
 #################################################################
-
 #Source file for functions used in the script, completely not needed, here for fun
 source /usr/local/lib/Trap.sh
 
