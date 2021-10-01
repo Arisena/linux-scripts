@@ -8,4 +8,9 @@ choice=$(zenity --width 500 --height 500 --list --column "Games Installed, they 
 
 echo $choice
 
-exec "~/GOG Games/$choice/start.sh"
+if [ -z $choice ]
+then
+    exit 1
+else
+    exec "~/GOG Games/$choice/start.sh"
+fi
