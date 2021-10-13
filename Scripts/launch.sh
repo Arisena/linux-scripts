@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -z $CALLED_FROM_START_APP ] && { echo "Not called correctly"; exit 42; }
+#[ -z $CALLED_FROM_START_APP ] && { echo "Not called correctly"; exit 42; }
 
 dialog --title "Launch.sh" \
 	--backtitle 'Version 0.3' \
@@ -15,9 +15,6 @@ selection=$(dialog --title "Graphical Interface" \
 	--menu "Please Select:" 11 25 4 \
 	"1" "i3" \
 	"2" "gnome" \
-	"3" "cinnamon" \
-	"4" "Dwarf Fortress" \
-	"5" "Cataclysm DDA" \
 	2>&1 1>&3)
 
 case $selection in
@@ -30,15 +27,6 @@ case $selection in
 		;;
 	2 )
 		XS=gnome startx
-		;;
-	3 )
-		XS=cin startx
-		;;
-	4 )
-		XS=df startx
-		;;
-	5 )
-		XS=cata startx
 		;;
 esac
 
