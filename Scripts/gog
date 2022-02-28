@@ -20,6 +20,7 @@ number=0
 clear
 
 #Prints out all options that appear in the array
+echo "Username=$USER ; Games in $HOME"
 echo "          ---Options---"
 for element in "${games[@]}"
 do
