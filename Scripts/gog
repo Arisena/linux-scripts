@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 4.0 - Author:Arisena
+#GoG Game Launcher version 4.01 - Author:Arisena
 #################################################################
 : <<'Banner'
   ____        ____   _                           _ 
@@ -14,7 +14,7 @@ Banner
 source /usr/local/lib/Trap.sh
 
 #Variables, makes an array with all games in that directory, needs changed if installing games outside home directory
-games=(/home/$USER/GOG\ Games/*)
+games=(/mnt/network/game-store/GOG\ Games/*)
 number=0
 
 clear
