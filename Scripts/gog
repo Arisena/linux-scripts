@@ -32,6 +32,7 @@ echo "'Exit' is also valid"
 
 read -p "Choice: " choice
 
+#Check if the user input a number, if not, restart
 if [ $choice -eq $((number)) 2> /dev/null ]
 then
 	echo "Input Error"
@@ -41,6 +42,7 @@ then
 	exit 0
 fi
 
+#Checks if the choice exists in the array
 if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -z "$choice" ]
 then
 	echo "Input Error : Choice Not Listed : Restarting"
