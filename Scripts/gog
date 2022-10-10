@@ -28,7 +28,7 @@ do
 	number=$((number+1))
 done
 echo "          -------------"
-echo "'Exit' is also valid"
+echo "'exit' is also valid"
 
 read -p "Choice: " choice
 
