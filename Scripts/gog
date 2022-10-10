@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 4.12 - Author:Arisena
+#GoG Game Launcher version 4.15 - Author:Arisena
 #################################################################
 : <<'Banner'
   ____        ____   _                           _ 
@@ -20,7 +20,7 @@ number=0
 clear
 
 #Prints out all options that appear in the array
-echo "Username=$USER ; Games in $HOME"
+echo "Username=$USER"
 echo "          ---Options---"
 for element in "${games[@]}"
 do
