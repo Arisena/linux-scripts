@@ -20,7 +20,7 @@ number=0
 clear
 
 #Prints out all options that appear in the array
-echo "Username=$USER"
+echo "Username=$USER ; Please verify mount points in script"
 echo "          ---Options---"
 for element in "${games[@]}"
 do
