@@ -1,10 +1,10 @@
 #!/bin/bash
 #GoG Game Launcher GUI Edition
-games=(/home/*/GOG\ Games/*)
+games=(/mnt/alt-drive/GOG\ Games/*)
 name=("${games[@]##*/}")
 number=0
 
-choice=$(zenity --width 500 --height 500 --list --column "Games Installed, they must be in your Home Directory" "${name[@]}")
+choice=$(zenity --width 500 --height 500 --list --column "Games Installed, please verify mount point in script" "${name[@]}")
 
 echo $choice
 
