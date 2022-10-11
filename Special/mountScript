@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 clear
-mounttype=( '1. physical' '2. network' '3. umount' )
+mounttype=( '1. physical' '2. network(Samba)' '3. umount' )
 
 sudo fdisk -l | grep --color=auto /dev/
 
