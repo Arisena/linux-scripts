@@ -34,7 +34,7 @@ read -p "Choice: " choice
 if [ $choice -eq $((number)) 2> /dev/null ]
 then
 	echo "Input Error"
-	redo
+    exit 1
 elif grep -q exit <<<"$choice";
 then
 	exit 0
@@ -45,12 +45,12 @@ if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -
 then
 	echo "Input Error : Choice Not Listed : Restarting"
 	sleep .5
-	redo
+    exit 1
 elif [ $choice -eq $choice 2> /dev/null ]
 then
 	exec "${games[$choice]}/start.sh"
 else
 	echo "Input Error : Restarting Script"
 	sleep .5
-	redo
+    exit 1
 fi
