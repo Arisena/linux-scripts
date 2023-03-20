@@ -2,8 +2,8 @@
 
 #List all running Java processes, if one exists it will fill the variable
 #Will need to put more than just "java" if multiple servers are running
-#						ex: "java -Xmx6G -Xmx6G -jar forge-1.16.5-36.2.39.jar nogui?"
-#						Or whatever the specific MC server command is
+#ex: "java -Xmx6G -Xmx6G -jar forge-1.16.5-36.2.39.jar nogui?"
+#Or whatever the specific MC server command is
 running=$(ps -ef | grep "java" | grep -v grep)
 
 #Send Email using msmtp when the server starts (Optional)
