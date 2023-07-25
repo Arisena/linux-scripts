@@ -1,2 +1,42 @@
 #!/bin/bash
-sudo pacman -Rns $(pacman -Qtdq)
+
+options=('0. Basic' '1. Advanced' '2. Exit')
+
+echo "Welcome to CleanOrphans MKI; Overcomplicated for no reason"
+echo ""
+
+printf '%s\n' "${options[@]}"
+
+echo ""
+read -p "Choice: " choice
+
+
+
+case $choice in
+    0)
+        sudo pacman -Rns $(pacman -Qtdq)
+        ;;
+    1)
+        echo "Deeper Search for Uneeded Packages"
+        sleep 0.8
+        sudo pacman -Qqd | sudo pacman -Rsu --print -
+        sleep 0.8
+        echo ""
+        read -p "Would you like to remove these? y or n : " choice2
+        if [ $choice2 == "y" ];
+        then
+            sudo pacman -Qqd | sudo pacman -Rsu -
+        elif [ $choice2 == "n" ];
+        then
+            echo "Noted; exiting script;"
+            exit 0
+        else
+            echo "Error: Incorrect Input;"
+            exit 1
+        fi
+
+        ;;
+    2)
+        exit 0
+        ;;
+esac
