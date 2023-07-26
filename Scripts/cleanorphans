@@ -1,6 +1,6 @@
 #!/bin/bash
 
-options=('0. Basic' '1. Advanced' '2. Exit')
+options=('0. Basic' '1. Advanced' '2. Flatpak' '3. Exit')
 
 echo "Welcome to CleanOrphans MKI; Overcomplicated for no reason"
 echo ""
@@ -37,6 +37,9 @@ case $choice in
 
         ;;
     2)
+        flatpak uninstall --unused
+        ;;
+    3)
         exit 0
         ;;
 esac
