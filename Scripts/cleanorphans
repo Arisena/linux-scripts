@@ -14,6 +14,7 @@ read -p "Choice: " choice
 
 case $choice in
     0)
+        echo ""
         sudo pacman -Rns $(pacman -Qtdq)
         ;;
     1)
@@ -37,6 +38,7 @@ case $choice in
 
         ;;
     2)
+        echo ""
         flatpak uninstall --unused
         ;;
     3)
