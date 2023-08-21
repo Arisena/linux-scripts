@@ -1,4 +1,5 @@
 #!/bin/bash
+#Pointlessly long for fun
 
 options=('0. Basic' '1. Advanced' '2. Flatpak' '3. Exit')
 
