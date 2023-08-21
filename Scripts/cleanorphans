@@ -15,10 +15,12 @@ read -p "Choice: " choice
 
 case $choice in
     0)
+		#Recommended; Removes all packages that are not required by other packages
         echo ""
         sudo pacman -Rns $(pacman -Qtdq)
         ;;
     1)
+		#Not as recommended; Also removes packages that are "Optionally Required" by others
         echo "Deeper Search for Uneeded Packages"
         sleep 0.8
         sudo pacman -Qqd | sudo pacman -Rsu --print -
