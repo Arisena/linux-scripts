@@ -27,7 +27,7 @@ $(hostname --fqdn)
 
 
 Best regards,
-Auto-Mailer @atswarra.com
+Auto-Mailer @example.com
 EOF
 }
 
@@ -42,10 +42,10 @@ fi
 #If it is, send keys into TMUX session to start the MC Server
 #Else ; Exit
 if [[ -z $running ]]; then
-	tmux send-keys -t Minecraft "cd /home/ari/minecraft" ENTER
-	#Will need to rename 'start.sh' to whatever script you use to start the MC Server
+	tmux send-keys -t Minecraft "cd /path/to/minecraft" ENTER
+	#Will need to change 'start.sh' to whatever script you use to start the MC Server; or create a symlink
 	tmux send-keys -t Minecraft ./start.sh ENTER
-	#Comment out the line below if you do not wish to use email
+	#Comment out the line below if you do not wish to use email; Can be edited to say pretty much anything, including above function
 	send_email email@example.com "Minecraft Server Started" "The Minecraft Server has begun it's startup sequence"
 else
 	exit 0
