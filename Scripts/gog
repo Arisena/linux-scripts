@@ -1,5 +1,5 @@
 #!/bin/bash
-#GoG Game Launcher version 4.15 - Author:Arisena
+#GoG Game Launcher version 4.2 - Author:Arisena
 #################################################################
 : <<'Banner'
   ____        ____   _                           _ 
@@ -14,6 +14,18 @@ Banner
 #Variables, makes an array with all games in that directory, needs changed if installing games outside home directory
 games=(/mnt/alt-drive/GoG\ Games/*)
 number=0
+
+#Create a log file and clear it each time the script starts
+log="/tmp/gog-launcher.log"
+if [ -f "$log" ];
+then
+    echo "" > "$log"
+fi
+
+#Append output to the log file
+exec {out}>"$log"
+date_time=$( date '+%D::%H:%M' )
+echo "Log Start $date_time" > $log
 
 clear
 
@@ -31,7 +43,7 @@ echo "'exit' is also valid"
 read -p "Choice: " choice
 
 #Check if the user input a number, if not, restart
-if [ $choice -eq $((number)) 2> /dev/null ]
+if [ $choice -eq $((number)) ]
 then
 	echo "Input Error"
     exit 1
@@ -41,14 +53,17 @@ then
 fi
 
 #Checks if the choice exists in the array
-if [ $choice -gt $number 2> /dev/null ] || [ $choice -lt 0 2> /dev/null ] || [ -z "$choice" ]
+if [ $choice -gt $number ] || [ $choice -lt 0 ] || [ -z "$choice" ]
 then
 	echo "Input Error : Choice Not Listed : Restarting"
 	sleep .5
     exit 1
-elif [ $choice -eq $choice 2> /dev/null ]
+elif [ $choice -eq $choice ]
 then
-	exec "${games[$choice]}/start.sh"
+    clear
+    echo "Executing game..."
+    echo "Log file at : $log"
+	exec "${games[$choice]}/start.sh" | tee >>"$log"
 else
 	echo "Input Error : Restarting Script"
 	sleep .5
