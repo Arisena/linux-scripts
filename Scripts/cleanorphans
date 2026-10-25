@@ -23,7 +23,7 @@ case $choice in
 		#Not as recommended; Also removes packages that are "Optionally Required" by others
         echo "Deeper Search for Uneeded Packages"
         sleep 0.8
-        sudo pacman -Qqd | sudo pacman -Rsu --print -
+        pacman -Qqd | sudo pacman -Rsu --print -
         sleep 0.8
         echo ""
         read -p "Would you like to remove these? y or n : " choice2
