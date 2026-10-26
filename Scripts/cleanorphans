@@ -1,50 +1,60 @@
-#!/bin/bash
-#Pointlessly long for fun
+#!/usr/bin/env bash
+# cleanorphans — remove pacman orphans and unused flatpak runtimes.
+# An "orphan" is a package installed as a dependency that nothing requires anymore.
 
-options=('0. Basic' '1. Advanced' '2. Flatpak' '3. Exit')
+set -uo pipefail
 
-echo "Welcome to CleanOrphans MKI; Overcomplicated for no reason"
-echo ""
+print_orphans() {
+    local -a orphans
+    mapfile -t orphans < <(pacman -Qtdq)
+    if ((${#orphans[@]} == 0)); then
+        echo "No orphans found."
+        return 1
+    fi
+    echo "Orphans (${#orphans[@]}):"
+    pacman -Qdt "${orphans[@]}"
+    return 0
+}
 
-printf '%s\n' "${options[@]}"
+remove_orphans() {
+    local -a orphans
+    mapfile -t orphans < <(pacman -Qtdq)
+    if ((${#orphans[@]} == 0)); then
+        echo "No orphans found."
+        return 0
+    fi
+    echo "The following ${#orphans[@]} package(s) will be removed:"
+    pacman -Qdt "${orphans[@]}"
+    echo
+    read -rp "Proceed? [y/N] " reply
+    if [[ ${reply,,} != "y" ]]; then
+        echo "Aborted."
+        return 0
+    fi
+    sudo pacman -Rns "${orphans[@]}"
+}
 
-echo ""
-read -p "Choice: " choice
-
-
-
-case $choice in
-    0)
-		#Recommended; Removes all packages that are not required by other packages
-        echo ""
-        sudo pacman -Rns $(pacman -Qtdq)
-        ;;
-    1)
-		#Not as recommended; Also removes packages that are "Optionally Required" by others
-        echo "Deeper Search for Uneeded Packages"
-        sleep 0.8
-        pacman -Qqd | sudo pacman -Rsu --print -
-        sleep 0.8
-        echo ""
-        read -p "Would you like to remove these? y or n : " choice2
-        if [ $choice2 == "y" ];
-        then
-            sudo pacman -Qqd | sudo pacman -Rsu -
-        elif [ $choice2 == "n" ];
-        then
-            echo "Noted; exiting script;"
-            exit 0
-        else
-            echo "Error: Incorrect Input;"
-            exit 1
-        fi
-
-        ;;
-    2)
-        echo ""
-        flatpak uninstall --unused
-        ;;
-    3)
-        exit 0
-        ;;
-esac
+while true; do
+    cat <<'EOF'
+CleanOrphans
+  1) List and remove pacman orphans
+  2) Show "not required" packages (report only, no removal)
+  3) Remove unused flatpak runtimes
+  4) Exit
+EOF
+    read -rp "Choice: " choice
+    echo
+    case $choice in
+        1) remove_orphans ;;
+        2)
+            echo "Packages installed as dependencies that nothing explicitly requires:"
+            echo "(Report only — this includes optional dependencies of packages you use.)"
+            echo
+            pacman -Qqd | pacman -Rsu --print - 2>/dev/null | sed -n '/^Packages (/,$p'
+            ;;
+        3) flatpak uninstall --unused ;;
+        4) exit 0 ;;
+        *) echo "Invalid choice." ;;
+    esac
+    echo
+done
